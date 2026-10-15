@@ -34,6 +34,18 @@ npm run build
 
 Todo es contenido estático: no hacen falta claves ni servicios externos.
 
+## Publicación
+
+El sitio se publica en **Vercel** (detecta Vite y usa `npm run build`, con la salida en `dist/`).
+
+1. Importa este repositorio en Vercel.
+2. Copia la URL de producción que te asigne y ponla en la variable de entorno `VITE_SITE_URL`
+   (Vercel → Settings → Environment Variables). Ese valor alimenta el canonical, Open Graph,
+   `robots.txt` y `sitemap.xml`.
+3. A partir de ahí, cada `git push` a `main` vuelve a desplegar solo.
+
+Para probar el resultado de producción en local: `npm run build && npm run preview`.
+
 ## Cómo mantenerlo
 
 **Datos de contacto y redes.** WhatsApp, teléfono, horario y redes sociales están en
@@ -47,8 +59,10 @@ presentación, precio y fotografía.
 aparece al compartir el enlace. Con `npm run assets` se regeneran las fotografías en varios tamaños
 y todos esos derivados.
 
-**Dominio.** Recuerda poner el dominio real en `index.html`, `public/robots.txt` y
-`public/sitemap.xml` (hoy figura `cacaoliva.com` como marcador).
+**Dirección del sitio.** La URL pública vive en una sola variable, `VITE_SITE_URL` (ver
+`.env.example`). De ahí se rellenan el canonical, Open Graph, los datos estructurados y los archivos
+`robots.txt` y `sitemap.xml`, que se generan durante el build. Para cambiar de dirección —por
+ejemplo, al comprar un dominio propio— basta con actualizar esa variable y volver a desplegar.
 
 ## Créditos de las fotografías
 
@@ -74,10 +88,11 @@ Comandos útiles, además de `dev` y `build`: `npm run preview` (ver el resultad
 <!--
 Estructura del proyecto:
   brand/               Logo fuente
-  public/              Imágenes, iconos, robots.txt y sitemap.xml
+  public/              Imágenes e iconos
   scripts/             Generación de imágenes y assets de marca
   src/components/      Secciones de la página
   src/data/products.ts Catálogo de productos
   src/config.ts        Datos del negocio
   src/lib/             Utilidades
+  vite.config.ts       Build, URL del sitio y generación de robots.txt/sitemap.xml
 -->

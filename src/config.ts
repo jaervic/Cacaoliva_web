@@ -5,8 +5,8 @@
 export const SITE = {
   name: 'Cacaoliva',
   tagline: 'Postres Artesanales',
-  /** URL pública del sitio (para canonical, Open Graph y sitemap). Sustituir por el dominio real. */
-  url: 'https://cacaoliva.com',
+  /** URL pública del sitio. Se define con VITE_SITE_URL (ver vite.config.ts). */
+  url: import.meta.env.VITE_SITE_URL,
   locale: 'es_VE',
   description:
     'Cacaoliva: pastelería y chocolatería venezolana. Descubre el auténtico sabor del cacao venezolano con nuestros bombones, trufas y postres artesanales.',
