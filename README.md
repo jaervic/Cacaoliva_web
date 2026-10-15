@@ -1,77 +1,61 @@
 # Cacaoliva
 
-Landing page de **Cacaoliva**, pastelería y chocolatería venezolana especializada en cacao fino de aroma.
+**Cacaoliva** es un emprendimiento de repostería y chocolatería venezolana dedicado al cacao fino
+de aroma. Este repositorio es el sitio web del negocio: una página sencilla, de un solo recorrido,
+donde se presentan las creaciones de la casa y los pedidos se cierran por WhatsApp.
 
-Sitio de una sola página construido con **React 19**, **Vite** y **Tailwind CSS v4**. Todo el contenido
-es estático y los pedidos se cierran por WhatsApp.
+No hay carrito ni pasarela de pagos. La idea es simple: que quien entre se antoje, conozca nuestra
+historia y nos escriba.
 
-## Requisitos
+## Qué encontrarás en la página
 
-- Node.js 18 o superior.
+- **Portada** con la propuesta de la casa y accesos directos.
+- **Nuestras creaciones**: bombones, trufas, la Tableta Origen Chuao y la Marquesa, con su ficha de
+  ingredientes y presentación.
+- **Nuestra historia**: el vínculo con el cacao venezolano.
+- **Lo que dicen los clientes** y **preguntas frecuentes** (delivery, métodos de pago, anticipación
+  y alérgenos).
+- **Cómo ordenar**, paso a paso, con contacto directo por WhatsApp.
 
-## Puesta en marcha
+## Ver el sitio en tu computadora
+
+Necesitas Node.js 18 o superior.
 
 ```bash
 npm install
 npm run dev
 ```
 
-La web queda disponible en `http://localhost:3000`.
+Después abre `http://localhost:3000`. Para generar la versión lista para publicar:
 
-> No se requieren variables de entorno ni claves de API.
-
-## Scripts
-
-| Comando             | Descripción                                                        |
-| ------------------- | ------------------------------------------------------------------ |
-| `npm run dev`       | Servidor de desarrollo con HMR.                                    |
-| `npm run build`     | Compila la versión de producción en `dist/`.                       |
-| `npm run preview`   | Sirve localmente el resultado de `build`.                          |
-| `npm run typecheck` | Comprueba los tipos con TypeScript.                                |
-| `npm run lint`      | Ejecuta ESLint.                                                    |
-| `npm run format`    | Formatea el código con Prettier.                                   |
-| `npm run assets`    | Regenera imágenes responsive, favicons y la imagen Open Graph.     |
-
-## Personalización
-
-### Datos del negocio
-
-Edita **`src/config.ts`**: WhatsApp, teléfono, horario, dirección y redes sociales se usan en toda
-la web y en los enlaces de pedido. El número de WhatsApp va en formato internacional y sin `+` ni
-espacios (por ejemplo `584126812345`).
-
-### Catálogo de productos
-
-Los productos viven en **`src/data/products.ts`**. Cada producto incluye nombre, descripción,
-descripción larga, ingredientes, presentación, precio, etiqueta opcional e imagen.
-
-### Fotografías, logo y metadatos
-
-- `brand/logo.png` es el logo de marca (favicon, iconos y Open Graph).
-- Las fotografías se generan con `npm run assets` (definidas en `scripts/generate-assets.mjs`).
-- Recuerda **reemplazar el dominio `cacaoliva.com`** por el real en:
-  `index.html` (canonical, Open Graph y JSON-LD), `public/robots.txt` y `public/sitemap.xml`.
-
-## Estructura
-
-```
-brand/               Logo fuente de marca
-public/              Assets estáticos (imágenes, iconos, robots.txt, sitemap.xml)
-scripts/             Script de generación de assets
-src/
-  components/        Componentes de la interfaz
-  data/products.ts   Catálogo de productos
-  lib/               Hooks y utilidades
-  config.ts          Configuración del negocio
-  types.ts           Tipos compartidos
-  App.tsx            Composición de la página
+```bash
+npm run build
 ```
 
-## Créditos de imágenes
+Todo es contenido estático: no hacen falta claves ni servicios externos.
 
-Las fotografías se descargan y optimizan con `npm run assets` (ver `scripts/generate-assets.mjs`).
+## Cómo mantenerlo
 
-- Fotografías de producto y hero: [Unsplash](https://unsplash.com) (Unsplash License).
+**Datos de contacto y redes.** WhatsApp, teléfono, horario y redes sociales están en
+`src/config.ts`. El número de WhatsApp va en formato internacional, sin `+` ni espacios (por
+ejemplo, `584126812345`).
+
+**Productos.** El catálogo vive en `src/data/products.ts`: nombre, descripciones, ingredientes,
+presentación, precio y fotografía.
+
+**Logo e imágenes.** El logo está en `brand/logo.png`; de él se generan el favicon y la imagen que
+aparece al compartir el enlace. Con `npm run assets` se regeneran las fotografías en varios tamaños
+y todos esos derivados.
+
+**Dominio.** Recuerda poner el dominio real en `index.html`, `public/robots.txt` y
+`public/sitemap.xml` (hoy figura `cacaoliva.com` como marcador).
+
+## Créditos de las fotografías
+
+Las fotos actuales son de banco de imágenes y están pensadas para sustituirse por fotografías
+propias.
+
+- Fotografías de producto y portada: [Unsplash](https://unsplash.com) (Unsplash License).
 - `Cocoa Pods.JPG` (sección "Nuestra Historia"): dominio público, autoría de Medicaster, vía
   [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG).
 - `Rocky Mountain chocolates.jpg` (Bombones de Autor): CC0, vía
@@ -79,3 +63,21 @@ Las fotografías se descargan y optimizan con `npm run assets` (ver `scripts/gen
 - `Truffles with nuts and chocolate dusting.jpg` (Trufas Aterciopeladas): CC BY 2.0, vía
   [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Truffles_with_nuts_and_chocolate_dusting.jpg).
 
+## Detalles técnicos
+
+Página hecha con React, Vite y Tailwind CSS, tipada con TypeScript. Todo el contenido es estático y
+los pedidos se coordinan íntegramente por WhatsApp.
+
+Comandos útiles, además de `dev` y `build`: `npm run preview` (ver el resultado del build),
+`npm run typecheck`, `npm run lint`, `npm run format` y `npm run assets`.
+
+<!--
+Estructura del proyecto:
+  brand/               Logo fuente
+  public/              Imágenes, iconos, robots.txt y sitemap.xml
+  scripts/             Generación de imágenes y assets de marca
+  src/components/      Secciones de la página
+  src/data/products.ts Catálogo de productos
+  src/config.ts        Datos del negocio
+  src/lib/             Utilidades
+-->
