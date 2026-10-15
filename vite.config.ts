@@ -12,7 +12,7 @@ const root = fileURLToPath(new URL('.', import.meta.url));
  * Se puede sobrescribir con la variable de entorno VITE_SITE_URL
  * (en Vercel: Settings → Environment Variables).
  */
-const SITE_URL = (process.env.VITE_SITE_URL || 'https://cacaoliva-project.vercel.app')
+const SITE_URL = (process.env.VITE_SITE_URL || 'https://cacaoliva.vercel.app')
   .trim()
   .replace(/\/+$/, '');
 
